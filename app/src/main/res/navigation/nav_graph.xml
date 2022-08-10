@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/userFragment">
+
+    <fragment
+        android:id="@+id/heroesListFragment"
+        android:name="com.example.dota2statisticapp.ui.fragment.HeroesListFragment"
+        android:label="heroes_list_fragment"
+        tools:layout="@layout/fragment_heroes_list" >
+        <action
+            android:id="@+id/action_heroesListFragment_to_heroDetailFragment"
+            app:destination="@id/heroDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/heroDetailFragment"
+        android:name="com.example.dota2statisticapp.ui.fragment.HeroDetailFragment"
+        android:label="fragment_hero_detail"
+        tools:layout="@layout/fragment_hero_detail" >
+        <argument
+            android:name="heroName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.dota2statisticapp.ui.fragment.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_userFragment_to_heroesListFragment"
+            app:destination="@id/heroesListFragment" />
+    </fragment>
+</navigation>

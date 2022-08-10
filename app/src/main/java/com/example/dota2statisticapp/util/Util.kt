@@ -4,12 +4,14 @@ object Util {
 
 
     fun getHeroImageUrlByHeroName(heroName: String) : String {
-        val convertedHeroName = heroName
+        return "$heroesImageUrl${getConvertedHeroName(heroName)}.png"
+    }
+
+    fun getConvertedHeroName(heroName: String): String{
+        val heroNameWithoutSpaces = heroName
             .toLowerCase()
             .replace("\\s".toRegex(), "_")
-
-        return "$heroesImageUrl${heroNameConverter.getOrDefault(convertedHeroName, convertedHeroName)}.png"
-
+        return heroNameConverter.getOrDefault(heroNameWithoutSpaces, heroNameWithoutSpaces)
     }
 
     private val heroNameConverter: Map<String, String> = mapOf(
@@ -35,4 +37,5 @@ object Util {
         "vengeful_spirit" to "vengefulspirit",
         "underlord" to "abyssal_underlord",
     )
+
 }

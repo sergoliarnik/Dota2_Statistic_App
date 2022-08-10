@@ -1,20 +1,21 @@
-package com.example.dota2statisticapp.viewmodel
+package com.example.dota2statisticapp.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dota2statisticapp.data.model.Heroes
+import com.example.dota2statisticapp.data.model.User
 import com.example.dota2statisticapp.data.repository.Repository
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class MainViewModel: ViewModel() {
+class UserViewModel: ViewModel() {
     var repository = Repository()
-    val list: MutableLiveData<Response<Heroes>> = MutableLiveData()
+    val user: MutableLiveData<Response<User>> = MutableLiveData()
 
-    fun getHeroes(){
+    fun getUser(userId: String){
         viewModelScope.launch {
-            list.value = repository.getHeroes()
+            user.value = repository.getUser(userId)
         }
     }
 }
