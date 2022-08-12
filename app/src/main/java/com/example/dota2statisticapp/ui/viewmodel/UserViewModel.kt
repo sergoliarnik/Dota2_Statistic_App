@@ -18,4 +18,6 @@ class UserViewModel: ViewModel() {
             user.value = repository.getUser(userId)
         }
     }
+
+
 }

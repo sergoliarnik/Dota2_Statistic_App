@@ -4,13 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.UserFragment">
+    android:background="@drawable/cropped_background_image"
+    tools:context=".ui.fragment.UserFragment"
+    >
 
     <EditText
         android:id="@+id/userIdEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:hint="user id"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -18,22 +26,56 @@
         android:id="@+id/findUserButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/userIdEditText"
-        app:layout_constraintTop_toTopOf="@+id/userIdEditText"
+        android:layout_marginStart="20dp"
         android:text="find"
-        />
+        app:layout_constraintStart_toEndOf="@+id/userIdEditText"
+        app:layout_constraintTop_toTopOf="@+id/userIdEditText" />
 
+
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:id="@+id/avatarImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher_round"
+        app:cardCornerRadius="250dp"
+        app:layout_constraintStart_toStartOf="@+id/userIdEditText"
+        app:layout_constraintTop_toBottomOf="@+id/userIdEditText" />
 
     <TextView
+        android:layout_marginStart="20dp"
         android:id="@+id/userNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/findUserButton"
         android:text="ERROR"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/avatarImageView"
+        app:layout_constraintTop_toTopOf="@+id/avatarImageView" />
+
+    <TextView
+        android:textColor="@color/white"
+        android:id="@+id/mmrTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/userCountryTextView"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@id/userCountryTextView"
+        tools:text="MMR: 456"
+        android:text="MMR: 0"
         />
 
+    <TextView
+        android:textColor="@color/white"
+        android:id="@+id/userCountryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/userNameTextView"
+        app:layout_constraintStart_toStartOf="@id/userNameTextView"
+        tools:text="🇺🇦Сountry"
+        />
     <Button
         android:id="@+id/showHeroesButton"
         android:layout_width="wrap_content"
@@ -41,7 +83,7 @@
         android:text="Heroes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        android:layout_margin="20dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

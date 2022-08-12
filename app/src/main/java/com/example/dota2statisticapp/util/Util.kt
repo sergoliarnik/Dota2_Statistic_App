@@ -1,13 +1,16 @@
 package com.example.dota2statisticapp.util
 
+import com.example.dota2statisticapp.data.model.User
+import java.util.*
+
 object Util {
 
 
-    fun getHeroImageUrlByHeroName(heroName: String) : String {
+    fun getHeroImageUrlByHeroName(heroName: String): String {
         return "$heroesImageUrl${getConvertedHeroName(heroName)}.png"
     }
 
-    fun getConvertedHeroName(heroName: String): String{
+    fun getConvertedHeroName(heroName: String): String {
         val heroNameWithoutSpaces = heroName
             .toLowerCase()
             .replace("\\s".toRegex(), "_")
@@ -38,4 +41,23 @@ object Util {
         "underlord" to "abyssal_underlord",
     )
 
+    public fun getCountry(user: User): String {
+        return getFlag(user) + getCountryAbbreviatura(user) + ", " + getCountryName(user)
+    }
+
+    private fun getFlag(user: User): String {
+        val countryCode: String = user.profile.loccountrycode
+        val firstLetter = Character.codePointAt(countryCode, 0) - 0x41 + 0x1F1E6
+        val secondLetter = Character.codePointAt(countryCode, 1) - 0x41 + 0x1F1E6
+        return String(Character.toChars(firstLetter)) + String(Character.toChars(secondLetter))
+    }
+
+    private fun getCountryName(user: User): String {
+        val loc = Locale("", user.profile.loccountrycode)
+        return loc.displayCountry
+    }
+
+    private fun getCountryAbbreviatura(user: User): String {
+        return user.profile.loccountrycode
+    }
 }
